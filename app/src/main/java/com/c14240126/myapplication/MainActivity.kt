@@ -1,8 +1,10 @@
 package com.c14240126.myapplication
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -46,6 +48,17 @@ class MainActivity : AppCompatActivity(), AdapterKategori.OnAdapterListener {
         rvKategori = findViewById(R.id.rvKategori)
         tvEmpty = findViewById(R.id.tvEmpty)
         fabTambah = findViewById(R.id.fabTambahKategori)
+
+        val btnGoIncome = findViewById<Button>(R.id.btnGoIncome)
+        val btnGoExpense = findViewById<Button>(R.id.btnGoExpense)
+
+        btnGoIncome.setOnClickListener {
+            startActivity(Intent(this, IncomeActivity::class.java))
+        }
+
+        btnGoExpense.setOnClickListener {
+            startActivity(Intent(this, ExpenseActivity::class.java))
+        }
 
         adapter = AdapterKategori(arKategori, this)
         rvKategori.layoutManager = LinearLayoutManager(this)
